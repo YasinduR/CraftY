@@ -1,0 +1,20 @@
+header {
+    background-color: rgb(118, 23, 118) !important;;
+  }
+
+.navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1em;
+    margin-left: 15px;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #e2c2ff !important;
+  }
+
+  .navbar-nav .nav-item {
+    color:  white;
+  }

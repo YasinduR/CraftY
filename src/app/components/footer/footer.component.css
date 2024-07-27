@@ -1,0 +1,10 @@
+.container {
+    padding: 2rem;
+    text-align: center;
+  }
+  footer {
+    background-color: rgb(118, 23, 118) !important;;
+  }
+  p{
+    text-align: left;
+  }
