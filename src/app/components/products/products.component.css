@@ -1,0 +1,33 @@
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .product-card {
+    border: 1px solid #f1c0df;
+    background-color: rgb(183, 97, 221);
+    color: whitesmoke;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .product-card h2 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+  }
+  
+  .product-card img {
+    width: 300px;  /* Set the image width */
+    height: 300px; /* Set the image height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+  }
+  .product-card:hover {
+    transform: scale(1.05); /* Scale the card to 105% of its original size */
+    color:  #f1c0df;
+    background-color: rgb(102, 35, 130);
+  }

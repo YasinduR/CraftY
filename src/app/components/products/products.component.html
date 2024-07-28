@@ -1,1 +1,9 @@
-<p>products works!</p>
+<div class="products-container">
+    <div class="product-card" *ngFor="let product of products">
+      <a [routerLink]="['/product', product.id]">
+        <img [src]="product.imageurl" alt="{{product.name}}" />
+        <h2>{{product.name}}</h2>
+        <p>{{product.price | lkrFormatter}}</p>
+      </a>
+    </div>
+  </div>

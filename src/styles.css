@@ -15,3 +15,8 @@
   footer {
     margin-top: auto; /* Push the footer to the bottom */
   }
+
+  a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+  }
