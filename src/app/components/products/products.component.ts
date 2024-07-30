@@ -9,12 +9,22 @@ import { Product } from '../../models/product.model';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  isLoading = true;
+  errorMessage = '';
+
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
+    this.productService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.errorMessage = error.message;
+        this.isLoading = false;
+      }
     });
   }
 }

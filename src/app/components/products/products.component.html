@@ -1,9 +1,27 @@
-<div class="products-container">
+<div >
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading products...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="!isLoading && errorMessage" class="error">
+    <p>Error: {{ errorMessage }}</p>
+  </div>
+
+  <!-- No Products Available Message -->
+  <div *ngIf="!isLoading && !errorMessage && products.length === 0" class="no-products">
+    <p>No products available.</p>
+  </div>
+
+  <!-- Product Cards -->
+  <div class="products-container" *ngIf="!isLoading && !errorMessage && products.length > 0">
     <div class="product-card" *ngFor="let product of products">
-      <a [routerLink]="['/product', product.id]">
-        <img [src]="product.imageurl" alt="{{product.name}}" />
-        <h2>{{product.name}}</h2>
-        <p>{{product.price | lkrFormatter}}</p>
+      <a [routerLink]="['/product', product._id]">
+        <img [src]="product.imageurl" alt="{{ product.name }}" />
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price | lkrFormatter }}</p>
       </a>
     </div>
   </div>
+</div>

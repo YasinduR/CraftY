@@ -13,7 +13,7 @@
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    width: 300px;
+    width: 250px;
   }
   
   .product-card h2 {
@@ -22,8 +22,8 @@
   }
   
   .product-card img {
-    width: 300px;  /* Set the image width */
-    height: 300px; /* Set the image height */
+    width: 250px;  /* Set the image width */
+    height: 250px; /* Set the image height */
     object-fit: cover; /* Ensure the image covers the area without distortion */
   }
   .product-card:hover {

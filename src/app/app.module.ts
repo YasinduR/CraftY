@@ -12,6 +12,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { PolicyComponent } from './components/policy/policy.component';
 import { TosComponent } from './components/tos/tos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactComponent,
     ProductsComponent,
     PolicyComponent,
-    TosComponent
+    TosComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
