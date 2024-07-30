@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../models/product.model'; // Make sure this import is correct
+import { Product } from '../models/product.model'; 
+import { ProductDetail } from '../models/product-detail.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:3000/products'; // Replace with your base URL
+  private baseUrl = 'http://localhost:3000/products'; // base URL for Products
 
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl);
   }
+
+  getProductById(ref: string): Observable<ProductDetail> { //  ref is from objectID in MBD (Products/description)
+    const url = `${this.baseUrl}/${ref}`;
+    return this.http.get<ProductDetail>(url);
+  }
+
 }
 
+// intial dummy data remove later
 //{ id: 1, name: 'Product 1', price: 100,imageurl:'https://onelittleproject.com/wp-content/uploads/2022/06/Pressed-Flower-Craft-600x500.jpg' },
   //  { id: 2, name: 'Product 1', price: 100,imageurl:'https://onelittleproject.com/wp-content/uploads/2022/06/Pressed-Flower-Craft-600x500.jpg' },
  //   { id: 3, name: 'Product 1', price: 100,imageurl:'https://onelittleproject.com/wp-content/uploads/2022/06/Pressed-Flower-Craft-600x500.jpg' },

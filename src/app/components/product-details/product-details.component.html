@@ -1,4 +1,10 @@
 <div *ngIf="product" class="product-details">
     <h1>{{product.name}}</h1>
+    <p>Stock: {{ product.stock }}</p>
+    <div class="image-container">
+      <button (click)="prevImage()"><</button>
+      <img [src]="product.imageurls[currentImageIndex]" alt="{{ product.name }}" />
+      <button (click)="nextImage()">></button>
+    </div>
     <p>{{ product.price | lkrFormatter }}</p>
-</div>
+  </div>
