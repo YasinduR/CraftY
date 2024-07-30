@@ -13,7 +13,8 @@ import { PolicyComponent } from './components/policy/policy.component';
 import { TosComponent } from './components/tos/tos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ProductsComponent,
     PolicyComponent,
     TosComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
