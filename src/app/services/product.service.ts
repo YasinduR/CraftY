@@ -21,6 +21,12 @@ export class ProductService {
     return this.http.get<ProductDetail>(url);
   }
 
+  getProductToCart(ref: string): Observable<ProductDetail> { //  ref is from objectID in MBD (Products/details)
+    const url = `${this.baseUrl}/detail_request`;
+    return this.http.post<ProductDetail>(url,{'productId':ref})
+  }
+
+
 }
 
 // intial dummy data remove later
