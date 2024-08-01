@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
       next: (data) => {
         this.products = data;
         this.isLoading = false;
+        
       },
       error: (error) => {
         this.errorMessage = error.message;

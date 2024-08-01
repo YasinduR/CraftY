@@ -1,0 +1,13 @@
+<div class="profile-container" *ngIf="user">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <div class="user-details">
+      <h3>Your Details:</h3>
+      <p><strong>ID:</strong> {{ user._id }}</p>
+      <p><strong>Name:</strong> {{ user.username }}</p>
+      <p><strong>Address:</strong> {{ user.email }}</p>
+    </div>
+  </div>
+  
+  <div *ngIf="!user">
+    <p>User information is not available. Please log in.</p>
+  </div>

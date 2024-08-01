@@ -8,6 +8,7 @@ import { PolicyComponent } from './components/policy/policy.component';
 import { TosComponent } from './components/tos/tos.component'
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'policy', component: PolicyComponent },
   { path: 'tos', component: TosComponent },
   { path: 'login', component: LoginComponent },
+  {path:'profile', component: ProfileComponent},
   { path: '**', redirectTo: '' }
 ];
 
