@@ -9,6 +9,7 @@ import { TosComponent } from './components/tos/tos.component'
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'tos', component: TosComponent },
   { path: 'login', component: LoginComponent },
   {path:'profile', component: ProfileComponent},
+  {path:'cart',component: CartComponent},
   { path: '**', redirectTo: '' }
 ];
 

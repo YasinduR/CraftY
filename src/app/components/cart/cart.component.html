@@ -1,0 +1,14 @@
+<div *ngIf="user">
+<h2>Continue shopping !</h2>
+      <h3>Your Cart</h3>
+      <ul>
+        <li *ngFor="let cartitem of cart_detailed">
+            <!--<img [src]="cartitem[0].imageurls[0]", alt="">-->
+            <img [src]="cartitem[0].imageurls[0]" alt="{{ cartitem[0].name }}" />
+         {{ cartitem[0].name }}  x{{ cartitem[1].count }} available stock :{{ cartitem[0].stock }}
+        </li>
+      </ul>
+    </div>
+  <div *ngIf="!user">
+    <p>User information is not available. Please log in.</p>
+  </div>
