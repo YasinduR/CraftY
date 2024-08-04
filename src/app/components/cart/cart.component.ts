@@ -37,9 +37,26 @@ export class CartComponent {
     // Update cartitem count for given mail and cartitem object in Both Mongodb and current interface(cart_detailed array)
     this.cartService.updateCart(mail,objectID,current_count).subscribe({
       next:(data)=>{
+      // change the interface one vaerified that it is updated in database
+    
       const cartItem = this.cart_detailed.find((item: { cart: { objectId: string; }; }) => item.cart.objectId === objectID);
-      if (cartItem) {
-        cartItem.cart.count = current_count;
+      if (cartItem) { 
+        if(current_count==0){// delete item
+          // find index of the item to remove
+          const index = this.cart_detailed.findIndex(item => item.cart.objectId ===objectID);
+          // find index of the object ==> otherwise returns -1
+          if (index !== -1) { // remove by index only if item exist
+            this.cart_detailed.splice(index, 1);
+          }
+          if (this.user?.cart){
+            const index_a = this.user?.cart.findIndex(item => item.objectId ===objectID);
+            this.user.cart.splice(index_a,1);
+          }
+        }
+        else{
+          cartItem.cart.count = current_count;
+        }
+        
       }
         console.log('update successful', data ,this.cart_detailed,cartItem);
       },
