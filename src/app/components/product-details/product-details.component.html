@@ -6,5 +6,22 @@
       <img [src]="product.imageurls[currentImageIndex]" alt="{{ product.name }}" />
       <button (click)="nextImage()">></button>
     </div>
+    <div *ngIf="!is_already_in_Cart(); else elseBlock">
+      <button (click)="AddToCart()">Add to Cart</button>
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        <button (click)="RemoveFromCart()">Remove from Cart</button>
+      </div>
+    </ng-template>
+
     <p>{{ product.price | lkrFormatter }}</p>
+
+
+
+
+    <div>
+      
+    </div>
+    
   </div>

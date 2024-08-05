@@ -10,6 +10,7 @@
          x{{ cartitem.cart.count }} 
          <button (click)="updateCount(user.email,cartitem.cart.objectId,cartitem.cart.count+1)"> + </button> 
          available stock :{{ cartitem.product.stock }}
+         <button (click)="updateCount(user.email,cartitem.cart.objectId,0)"> remove </button> 
         </li>
       </ul>
     </div>
