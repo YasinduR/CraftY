@@ -4,6 +4,7 @@
       <ul>
         <li *ngFor="let cartitem of cart_detailed">
             <!--<img [src]="cartitem[0].imageurls[0]", alt="">-->
+            <input type="checkbox" [(ngModel)]="cartitem.checked" (change)="onCheckboxChange(cartitem)"/>
             <img [src]="cartitem.product.imageurls[0]" alt="{{ cartitem.product.name }}" />
          {{ cartitem.product.name }} 
          <button (click)="updateCount(user.email,cartitem.cart.objectId,cartitem.cart.count-1)"> - </button> 
@@ -13,6 +14,10 @@
          <button (click)="updateCount(user.email,cartitem.cart.objectId,0)"> remove </button> 
         </li>
       </ul>
+      <div>
+        Total price : {{Total_price}}
+      </div>
+
     </div>
   <div *ngIf="!user">
     <p>User information is not available. Please log in.</p>

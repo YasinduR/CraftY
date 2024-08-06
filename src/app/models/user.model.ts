@@ -14,6 +14,7 @@ export interface CartItem {
   }
 
 export interface CartItemExtended{
+  checked: boolean;  // is user going to buy this now (connects with the check box)
   product: ProductDetail;
   cart: CartItem;
 }

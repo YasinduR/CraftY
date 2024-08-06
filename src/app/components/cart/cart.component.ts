@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,SimpleChange,OnChanges } from '@angular/core';
 import { CartItem, CartItemExtended, User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
@@ -14,21 +14,23 @@ export class CartComponent {
   user: User | undefined;
   cart: Array<CartItem>= [];// Item Name and Count added BY user the wishlist
   cart_detailed:Array<CartItemExtended> =[]; // Item Name and Count added , images stock availability
+  Total_price:number=0;
 
   constructor(private authService: AuthService,private productService:ProductService, private cartService:CartService ) {}
 
   ngOnInit(): void {
     this.user = this.authService.getUserInfo(); 
     if(this.user){
-      this.fetchProductDetails()
+      this.fetchProductDetails();
     }
   }
 
   fetchProductDetails(): void {
     this.user?.cart.forEach(item => {
       this.productService.getProductToCart(item.objectId).subscribe(product => {
-        const new_item:CartItemExtended={product:product,cart:item};
+        const new_item:CartItemExtended={checked:true,product:product,cart:item};
         this.cart_detailed.push(new_item); 
+        this.Total_price += new_item.cart.count*new_item.product.price; // intially price of all in cart will be visible
       })
       });
     };
@@ -59,6 +61,7 @@ export class CartComponent {
         
       }
         console.log('update successful', data ,this.cart_detailed,cartItem);
+        this.updateTotal(); // update  the total
       },
       error: (error) => {
         console.error('Update failed', error);
@@ -66,5 +69,25 @@ export class CartComponent {
     }
     )
   };
+  onCheckboxChange(item: CartItemExtended) {  // For Testing perpose remove later
+    console.log(`Checkbox for ${item.product.name} is now: ${item.checked}`);
+    this.updateTotal();
+    // Additional actions can be performed here if needed
+  };
+
+  updateTotal(){
+    var total =0;
+    for (const cartitem of this.cart_detailed) {
+      if(cartitem.checked){
+        total +=cartitem.product.price * cartitem.cart.count;
+      }
+    }
+    this.Total_price = total
+    console.log("Total changed to ",total)
+  };
+
+
+
+
   
 }
