@@ -86,8 +86,4 @@ export class CartComponent {
     console.log("Total changed to ",total)
   };
 
-
-
-
-  
 }
