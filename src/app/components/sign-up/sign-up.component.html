@@ -1,0 +1,105 @@
+<div class="sign-up-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          placeholder="Enter your first name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('firstName')?.valid || !signUpForm.get('firstName')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('firstName')?.touched && signUpForm.get('firstName')?.invalid" class="text-danger">
+          <small *ngIf="signUpForm.get('firstName')?.errors?.['required']">First name is required.</small>
+          <small *ngIf="signUpForm.get('firstName')?.errors?.['minlength']">First name must be at least 3 characters.&#160;</small>
+          <small *ngIf="signUpForm.get('firstName')?.errors?.['maxlength']">First name cannot exceed 15 characters.&#160;</small>
+          <small *ngIf="signUpForm.get('firstName')?.errors?.['pattern']">First name can only contain letters and spaces.&#160;</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          placeholder="Enter your last name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('lastName')?.valid || !signUpForm.get('lastName')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('lastName')?.touched && signUpForm.get('lastName')?.invalid" class="text-danger">
+          <small *ngIf="signUpForm.get('lastName')?.errors?.['required']">Last name is required.</small>
+          <small *ngIf="signUpForm.get('lastName')?.errors?.['minlength']">Last name must be at least 3 characters.&#160;</small>
+          <small *ngIf="signUpForm.get('lastName')?.errors?.['maxlength']">Last name cannot exceed 15 characters.&#160;</small>
+          <small *ngIf="signUpForm.get('lastName')?.errors?.['pattern']">Last name can only contain letters and spaces.&#160;</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('email')?.valid || !signUpForm.get('email')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="text-danger">
+          <small *ngIf="signUpForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="signUpForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmEmail">Re-enter Email</label>
+        <input
+          id="confirmEmail"
+          type="email"
+          formControlName="confirmEmail"
+          placeholder="Re-enter your email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('confirmEmail')?.valid || !signUpForm.get('confirmEmail')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('confirmEmail')?.touched && signUpForm.get('confirmEmail')?.hasError('mismatch')" class="text-danger">
+            <small>Emails do not match.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('password')?.valid || !signUpForm.get('password')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid" class="text-danger">
+          <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Re-enter Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Re-enter your password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': !signUpForm.get('confirmPassword')?.valid || !signUpForm.get('confirmPassword')?.touched }"
+        />
+        <div *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.hasError('mismatch')" class="text-danger">
+            <small>Passwords do not match.</small>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
+    </form>
+</div>
+    <div class="login-link text-center mt-3">
+      <small>Already have an account? <a href="/login">Login here</a></small>
+    </div>

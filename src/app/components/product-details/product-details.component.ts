@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { ProductDetail } from '../../models/product-detail.model';
 import { AuthService } from '../../services/auth.service';
-
+import { LoginRequiredPopUpComponent } from '../login-required-pop-up/login-required-pop-up.component';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -25,7 +25,8 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private authService: AuthService,
-    private cartSevice: CartService
+    private cartSevice: CartService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +76,11 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error)
         }}
       );
+    }
+    else{
+      this.dialog.open(LoginRequiredPopUpComponent, {
+        width: '300px',
+      });
     }
     }
 

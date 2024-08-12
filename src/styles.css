@@ -2,8 +2,12 @@
 @import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css";
 @import "assests/custom.css";
 
-
-  
+.mat-dialog-container {
+  background-color: #8a2be2 !important; /* Higher specificity */
+  color: white !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+}
 /* Make the app-header and router 90% */
 .app-container {
   display: flex;
@@ -21,3 +25,6 @@
     color: inherit; /* Inherit color from parent */
   }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
