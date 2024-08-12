@@ -22,6 +22,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginRequiredPopUpComponent } from './components/login-required-pop-up/login-required-pop-up.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignUpCompleteComponent } from './components/sign-up-complete/sign-up-complete.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     ProfileComponent,
     CartComponent,
     LoginRequiredPopUpComponent,
-    SignUpComponent
+    SignUpComponent,
+    SignUpCompleteComponent
   ],
   imports: [
     BrowserModule,
