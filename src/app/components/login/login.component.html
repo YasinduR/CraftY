@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid||isLoading">Login</button>
   </form>
 </div>
 

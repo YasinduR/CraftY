@@ -23,6 +23,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { LoginRequiredPopUpComponent } from './components/login-required-pop-up/login-required-pop-up.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignUpCompleteComponent } from './components/sign-up-complete/sign-up-complete.component';
+import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SignUpCompleteComponent } from './components/sign-up-complete/sign-up-c
     CartComponent,
     LoginRequiredPopUpComponent,
     SignUpComponent,
-    SignUpCompleteComponent
+    SignUpCompleteComponent,
+    NotificationDialogComponent
   ],
   imports: [
     BrowserModule,
