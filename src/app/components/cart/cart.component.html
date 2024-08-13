@@ -1,24 +1,29 @@
-<div *ngIf="user">
-<h2>Continue shopping !</h2>
-      <h3>Your Cart</h3>
-      <ul>
-        <li *ngFor="let cartitem of cart_detailed">
-            <!--<img [src]="cartitem[0].imageurls[0]", alt="">-->
-            <input type="checkbox" [(ngModel)]="cartitem.checked" (change)="onCheckboxChange(cartitem)"/>
-            <img [src]="cartitem.product.imageurls[0]" alt="{{ cartitem.product.name }}" />
-         {{ cartitem.product.name }} 
-         <button (click)="updateCount(user.email,cartitem.cart.objectId,cartitem.cart.count-1)"> - </button> 
-         x{{ cartitem.cart.count }} 
-         <button (click)="updateCount(user.email,cartitem.cart.objectId,cartitem.cart.count+1)"> + </button> 
-         available stock :{{ cartitem.product.stock }}
-         <button (click)="updateCount(user.email,cartitem.cart.objectId,0)"> remove </button> 
-        </li>
-      </ul>
-      <div>
-        Total price : {{Total_price}}
-      </div>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-    </div>
-  <div *ngIf="!user">
-    <p>User information is not available. Please log in.</p>
+<div *ngIf="user" class="cart-container">
+  <h2>Continue shopping!</h2>
+  <h3>Your Cart</h3>
+  <ul>
+    <li *ngFor="let cartitem of cart_detailed">
+      <input type="checkbox" [(ngModel)]="cartitem.checked" (change)="onCheckboxChange(cartitem)" />
+      <img [src]="cartitem.product.imageurls[0]" alt="{{ cartitem.product.name }}" />
+      {{ cartitem.product.name }}
+      <button [disabled]="cartitem.cart.count==1" (click)="Reducecount(cartitem.cart.objectId, cartitem.cart.count)">-</button>
+      x{{ cartitem.cart.count }}
+      <button (click)="Addcount(cartitem.cart.objectId, cartitem.cart.count)">+</button>
+      Stock: {{ cartitem.product.stock }}
+      <button (click)="RemoveItem(cartitem.cart.objectId)"><i class="material-icons" style="font-size: 16px;">&#xe872;</i></button>
+    </li>
+  </ul>
+  <div class="total-price">
+    Total price: {{Total_price}}
   </div>
+  <div class="purchase-button">
+    <button [disabled]="!isPurchasable()">Purchase</button>
+  </div>
+</div>
+<div *ngIf="!user" class="login-prompt">
+  <p>User information is not available. Please log in.</p>
+</div>

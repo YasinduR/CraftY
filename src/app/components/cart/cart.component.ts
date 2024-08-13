@@ -34,8 +34,10 @@ export class CartComponent {
       })
       });
     };
+  
 
-  updateCount(mail:string,objectID: string,current_count: number) : void{ 
+
+  private updateCount(mail:string,objectID: string,current_count: number) : void{ 
     // Update cartitem count for given mail and cartitem object in Both Mongodb and current interface(cart_detailed array)
     this.cartService.updateCart(mail,objectID,current_count).subscribe({
       next:(data)=>{
@@ -69,6 +71,31 @@ export class CartComponent {
     }
     )
   };
+
+  Addcount(objectId:string,count:number){ // Increment count
+    if (this.user){
+      this.updateCount(this.user.email, objectId, count + 1)
+    }
+  }
+
+  Reducecount(objectId:string,count:number){ // Reduce count
+    if (this.user && count>0){
+      this.updateCount(this.user.email, objectId, count - 1)
+    }
+  }
+
+  RemoveItem(objectId:string){ // Remove cart item
+    if (this.user){
+      this.updateCount(this.user.email, objectId, 0)
+    }
+  
+  
+
+  }
+
+
+
+
   onCheckboxChange(item: CartItemExtended) {  // For Testing perpose remove later
     console.log(`Checkbox for ${item.product.name} is now: ${item.checked}`);
     this.updateTotal();
@@ -86,4 +113,15 @@ export class CartComponent {
     console.log("Total changed to ",total)
   };
 
+  isPurchasable(){
+    var Purchasable = true;
+    for (const cartitem of this.cart_detailed) {
+      if(cartitem.checked && cartitem.product.stock<cartitem.cart.count){
+        Purchasable = false
+        return Purchasable
+      }
+    }
+    return Purchasable
+
+};
 }

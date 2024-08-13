@@ -1,4 +1,128 @@
-img{
-    width: 100px;
-    height:  100px;
-}
+
+/* Style the container */
+div.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px purple;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style the headings */
+  h2, h3 {
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  /* Style the list of cart items */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #b595c0;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Style the checkbox */
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Style the product image */
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+  }
+  
+  /* Style the buttons */
+  button {
+    background-color: #9e229e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #7e1c7e;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Style the total price section */
+  div.total-price {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Style the purchase button */
+  div.purchase-button {
+    margin-top: 20px;
+  }
+  
+  div.purchase-button button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Style the login prompt */
+  div.login-prompt {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffeded;
+    color: #333;
+    font-size: 18px;
+  }
+
+
+  /* Style the checkbox */
+input[type="checkbox"] {
+    appearance: none; /* Remove default styling */
+    width: 18px;
+    height: 18px;
+    border: 2px solid purple;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Style the checkbox when checked */
+  input[type="checkbox"]:checked {
+    background-color: purple;
+    border-color: purple;
+  }
+  
+  input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
