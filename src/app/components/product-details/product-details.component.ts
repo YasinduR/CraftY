@@ -86,11 +86,12 @@ export class ProductDetailsComponent implements OnInit {
 
     RemoveFromCart():void{
       if(this.product && this.user){
-        const index_a = this.user?.cart.findIndex(item => item.objectId ===this.product?._id);
-        this.cartSevice.updateCart(this.user.email,this.product._id,0).subscribe({ // remove item => item count zero
+        const ObjectID = this.product._id
+        this.cartSevice.updateCart(this.user.email,ObjectID,0).subscribe({ // remove item => item count zero
           next: (result) => {
-            if (index_a!==0){
-              this.user?.cart.splice(index_a,1);
+            if (this.user?.cart){
+              const index_a = this.user?.cart.findIndex(item => item.objectId ===ObjectID);
+              this.user.cart.splice(index_a,1);
             }
             console.log(result)
           },
@@ -103,13 +104,13 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
-  is_already_in_Cart():boolean | undefined{ // check whether the product is already on the cart
+is_already_in_Cart():boolean{ // check whether the product is already on the cart
     if (this.product && this.user){
       const productId = this.product._id; // product id
       return this.user.cart?.some(item => item.objectId ===productId)
   }
   else{
-    return undefined
+    return false
   }
   }
 }

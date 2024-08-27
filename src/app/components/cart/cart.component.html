@@ -4,6 +4,7 @@
 
 <div *ngIf="user" class="cart-container">
   <h2>Continue shopping!</h2>
+  <div *ngIf="cart_detailed.length > 0; else cartnotavailable">
   <h3>Your Cart</h3>
   <ul>
     <li *ngFor="let cartitem of cart_detailed">
@@ -21,8 +22,13 @@
     Total price: {{Total_price}}
   </div>
   <div class="purchase-button">
-    <button [disabled]="!isPurchasable()">Purchase</button>
+    <button [disabled]="!isPurchasable()||Total_price===0">Purchase</button>
   </div>
+</div>
+<ng-template #cartnotavailable> 
+  <h4>Your Cart is empty</h4>
+  <button routerLink="/products">Add Products</button>
+</ng-template>
 </div>
 <div *ngIf="!user" class="login-prompt">
   <p>User information is not available. Please log in.</p>

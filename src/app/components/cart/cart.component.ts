@@ -30,7 +30,8 @@ export class CartComponent {
       this.productService.getProductToCart(item.objectId).subscribe(product => {
         const new_item:CartItemExtended={checked:true,product:product,cart:item};
         this.cart_detailed.push(new_item); 
-        this.Total_price += new_item.cart.count*new_item.product.price; // intially price of all in cart will be visible
+        this.Total_price += new_item.cart.count*new_item.product.price;
+        console.log(this.cart_detailed)                                                            // intially price of all in cart will be visible
       })
       });
     };
